@@ -21,9 +21,25 @@ function hideMenuOnSearch() {
     });
 }
 
+function setSaveableImgSymbol(node, isEnabled) {
+    node.dataset.symbol = isEnabled ? 'Закладки' : '♡';
+}
+
+function enableSaving() {
+    document.querySelectorAll('.saveable-img').forEach((n) => {
+        setSaveableImgSymbol(n, false); // TODO: add actual symbol here
+        const img = n.children[0];
+        n.addEventListener('click', () => {
+            console.log(img.src);
+        });
+    });
+}
+
 function onLoad() {
     highlightSearchResult();
     hideMenuOnSearch();
+
+    enableSaving();
 }
 
 window.addEventListener('load', onLoad);
