@@ -22,24 +22,55 @@ function hideMenuOnSearch() {
 }
 
 function setSaveableImgSymbol(node, isEnabled) {
-    node.dataset.symbol = isEnabled ? 'Закладки' : '♡';
+    node.dataset.symbol = isEnabled ? '♥' : '♡';
 }
 
-function enableSaving() {
-    document.querySelectorAll('.saveable-img').forEach((n) => {
-        setSaveableImgSymbol(n, false); // TODO: add actual symbol here
-        const img = n.children[0];
-        n.addEventListener('click', () => {
-            console.log(img.src);
+function getLiked() {
+    return fetch('/api/liked').then((r) => r.json());
+}
+
+function toggleLiked(entry) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return fetch('/api/liked', { method: 'POST', body: JSON.stringify({ entry }), headers }).then((r) => r.json());
+}
+
+function enableSaving(likedList) {
+    const nodes = document.querySelectorAll('.saveable-img');
+
+    // initially set all as unliked and attach event listener for clicking
+    nodes.forEach((n) => {
+        setSaveableImgSymbol(n, false);
+
+        const src = n.children[0].src;
+        n.addEventListener('click', async () => {
+            const isLiked = await toggleLiked(src);
+            setSaveableImgSymbol(n, isLiked);
         });
+    });
+
+    nodes.forEach((n) => {
+        const src = n.children[0].src;
+        setSaveableImgSymbol(n, likedList.includes(src));
     });
 }
 
-function onLoad() {
+function renderLiked(likedList) {
+    const container = document.getElementById('liked-gallery');
+    if (container) {
+        likedList.forEach((entry) => {
+            container.innerHTML += `<div class="liked-img"><img src="${entry}"></div>`;
+        });
+    }
+}
+
+async function onLoad() {
     highlightSearchResult();
     hideMenuOnSearch();
 
-    enableSaving();
+    const likedList = await getLiked();
+    enableSaving(likedList);
+    renderLiked(likedList);
 }
 
 window.addEventListener('load', onLoad);
