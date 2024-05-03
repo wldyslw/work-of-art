@@ -1,0 +1,425 @@
+@font-face {
+    font-family: 'Jost Regular';
+    font-weight: 400;
+    src: url(./fonts/Jost.ttf);
+}
+
+:root {
+    --max-content-width: 1400px;
+    --border-width: 3px;
+    font-size: 16px;
+}
+
+* {
+    font-family: 'Jost Regular', 'sans-serif';
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 1.5rem;
+    display: flex;
+    width: 100%;
+    padding: 1.5rem;
+    z-index: 1;
+
+    --text-color: black;
+    --text-shadow: 0 0 5px;
+    background-color: #ffffffe0;
+}
+
+header.transparent {
+    --text-color: white;
+    --text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    text-shadow: var(--text-shadow);
+}
+
+head .logo {
+    color: var(--text-color);
+}
+
+header .logo,
+header nav {
+    flex-shrink: 0;
+}
+
+header .search {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.5em;
+}
+
+header .search svg {
+    display: block;
+    flex-shrink: 0;
+    fill: var(--text-color);
+    height: 2rem;
+    width: 2rem;
+}
+
+header .search input {
+    background-color: transparent;
+    color: var(--text-color);
+    font-size: 1rem;
+    width: 100%;
+    max-width: 320px;
+    border: none;
+    border-bottom: var(--border-width) solid var(--text-color);
+    margin-left: 1em;
+    padding: 0 1em;
+}
+
+header .search input::placeholder {
+    color: var(--text-color);
+}
+
+header.transparent .search input::placeholder {
+    text-shadow: var(--text-shadow);
+    opacity: 1;
+}
+
+header a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+header nav a {
+    padding: 0 0.5em;
+}
+
+header nav a:not(:first-child) {
+    border-left: var(--border-width) solid var(--text-color);
+}
+
+.carousel {
+    position: relative;
+}
+
+.slider {
+    height: 100vh;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for Chrome, Safari, Edge (new) and Opera */
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.slider {
+    scrollbar-width: none;
+}
+
+.controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.controls a {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: var(--border-width) solid #fff;
+}
+
+.controls a:hover {
+    background-color: #fff;
+}
+
+.slide {
+    height: 100vh;
+    width: 100vw;
+    background-color: #eaeaea;
+
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#slide-1 {
+    background-image: url('./img/2.png');
+}
+
+#slide-2 {
+    background-image: url('./img/5.png');
+}
+
+#slide-3 {
+    background-image: url('./img/4.png');
+}
+
+#slide-4 {
+    background-image: url('./img/1.png');
+}
+
+h1.main-title {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    font-size: 8rem;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.content {
+    display: flex;
+    max-width: var(--max-content-width);
+    padding-right: auto;
+    margin: 9rem auto 0;
+}
+
+aside {
+    border-right: var(--border-width) solid black;
+    width: 13rem;
+    flex-shrink: 0;
+}
+
+main {
+    min-height: 50vh;
+    padding: 0 3rem;
+}
+
+main.life h1,
+main.gallery h1 {
+    position: relative;
+    width: fit-content;
+    font-size: 4rem;
+    transform: rotate(-90deg);
+    margin: 0;
+    margin-bottom: -8rem;
+}
+
+#life-header {
+    top: 3rem;
+    left: -16rem;
+}
+
+#gallery-header {
+    top: 7rem;
+    left: -20rem;
+}
+
+h2 {
+    font-size: 3rem;
+    margin: 0 0 0.5em;
+    position: relative;
+}
+
+.year {
+    font-size: 2rem;
+    position: absolute;
+    left: -13rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+figure {
+    margin: 2.5em 0 0 0;
+    position: relative;
+    text-align: center;
+}
+
+.life figure {
+    width: 50%;
+}
+
+.life figure.small {
+    width: 30%;
+}
+
+.life figure.left {
+    float: left;
+}
+
+.life figure.right {
+    float: right;
+}
+
+@media (max-width: 600px) {
+    .life figure {
+        width: 100%;
+    }
+
+    .life figure.small {
+        width: 50%;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1400px) {
+    .life figure.right figcaption {
+        left: -55vw;
+    }
+}
+
+@media (min-width: 1400px) {
+    .life figure.right figcaption {
+        left: -48rem;
+    }
+}
+
+img {
+    position: relative;
+}
+
+img::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+figure img {
+    display: block;
+    width: 80%;
+}
+
+figcaption {
+    position: absolute;
+    width: 10rem;
+    left: -15rem;
+}
+
+.gallery figcaption {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+}
+
+.life figcaption {
+    bottom: 0;
+}
+
+p {
+    font-size: 1.8rem;
+}
+
+p::first-letter {
+    font-size: 2em;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex p {
+    margin-top: 0;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.photo {
+    height: 20rem;
+    margin-right: 5em;
+}
+
+.social {
+    width: 3rem;
+    height: 3rem;
+    margin-left: 2em;
+}
+
+.contact-me {
+    background: #c7eeff;
+    padding: 2rem 4rem;
+}
+
+.message,
+.contact {
+    width: 50%;
+    padding: 0 0.5em;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.contact-me input,
+.contact-me textarea {
+    padding: 0.5em 1em;
+}
+
+.contact-me input[type='text'] {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5em;
+    font-size: 1.5rem;
+}
+
+.contact-me input[type='submit'] {
+    display: block;
+    font-size: 2rem;
+    color: white;
+    margin: 1em auto 0;
+    border: none;
+    border-radius: 3px;
+    background: black;
+    cursor: pointer;
+}
+
+footer {
+    margin-top: 10rem;
+    padding: 2.5rem;
+    background: #c7eeff;
+}
+
+@media (max-width: 1050px) {
+    :root {
+        --border-width: 2px;
+        font-size: 8px;
+    }
+
+    figcaption {
+        font-size: 1.3rem;
+    }
+
+    h1.main-title {
+        font-size: 5rem;
+    }
+
+    header nav.hidden {
+        display: none;
+    }
+
+    header .search input:not(:focus) {
+        width: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
