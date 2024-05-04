@@ -17,7 +17,8 @@ export class AppService {
       name,
       body,
     };
-    this.#feedback.push(entry);
+    this.#feedback.unshift(entry);
+    return this.#feedback;
   }
 
   getLiked() {
@@ -25,7 +26,6 @@ export class AppService {
   }
 
   toggleLiked(entry) {
-    console.log(entry, this.#liked);
     const index = this.#liked.indexOf(entry);
     if (index > -1) {
       this.#liked.splice(index, 1);

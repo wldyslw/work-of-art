@@ -385,6 +385,7 @@ textarea {
 .contact-me input,
 .contact-me textarea {
     padding: 0.5em 1em;
+    align-self: flex-start;
 }
 
 .contact-me input[type='text'] {
@@ -405,7 +406,7 @@ textarea {
     cursor: pointer;
 }
 
-footer {
+.global-footer {
     margin-top: 10rem;
     padding: 2.5rem;
     background: #c7eeff;
@@ -448,4 +449,24 @@ footer {
 
 .liked-img img {
     height: 100%;
+}
+
+/* #feedback-form input[type='submit'] {
+    display: block;
+    font-size: 2rem;
+    color: white;
+    margin: 1em auto 0;
+    border: none;
+    border-radius: 3px;
+    background: black;
+    cursor: pointer;
+} */
+
+blockquote {
+    margin-inline: 0;
+}
+
+blockquote footer {
+    margin-left: 1rem;
+    font-size: 1.5rem;
 }

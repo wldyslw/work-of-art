@@ -33,6 +33,7 @@ export class AppController {
   }
 
   @Post('feedback')
+  @Bind(Body('details'))
   addFeedback(details) {
     return this.appService.addFeedback(details);
   }

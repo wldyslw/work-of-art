@@ -45,12 +45,37 @@
 
         <div class="content">
             <main>
-                <div id="liked-gallery"></div>
+                <h2>Закладки</h2>
+                <div id="liked-gallery">
+                    <span>Здесь пока ничего нет.</span>
+                </div>
+                <h2>Отзывы</h2>
+                <form id="feedback-form" class="contact-me">
+                    <div class="flex">
+                        <div class="contact">
+                            <input type="text" name="name" placeholder="Ваше имя" id="feedback-name" />
+                        </div>
+                        <div class="message">
+                            <textarea
+                                name="body"
+                                cols="30"
+                                rows="10"
+                                placeholder="Текст отзыва"
+                                id="feedback-body"
+                            ></textarea>
+                        </div>
+                    </div>
+                    <input type="submit" value="Оставить отзыв" />
+                </form>
+                <div id="feedback-list">
+                    <span>Здесь пока ничего нет.</span>
+                </div>
             </main>
         </div>
 
-        <footer>© 2024 Work of Art</footer>
+        <footer class="global-footer">© 2024 Work of Art</footer>
 
-        <script src="./script.js"></script>
+        <script src="./search.js"></script>
+        <script src="./likedPage.js"></script>
     </body>
 </html>
